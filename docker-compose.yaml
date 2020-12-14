@@ -33,7 +33,7 @@ services:
           - pg_cluster
 
   backend:
-    image: misieq/weii_ai_aplikacja_glowna_backend:latest
+    image: app-glowna-back
     container_name: backend-container
     restart: unless-stopped
     volumes:
@@ -54,7 +54,7 @@ services:
 
 
   frontend:
-    image: misieq/weii_ai_aplikacja_glowna_frontend:latest
+    image: app-glowna-front
     container_name: frontend-container
     restart: unless-stopped
     environment:
@@ -97,7 +97,7 @@ services:
 
 
   celery-beat:
-    image: misieq/weii_ai_aplikacja_glowna_backend:latest
+    image: app-glowna-back
     command: celery -A Exchange  beat -l info
     volumes:
       - ./backend/BackendServer:/app/
