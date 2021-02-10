@@ -44,7 +44,7 @@ services:
       - LC_TIME="pl_PL"
       - RUN_MEMCACHE=TRUE
       - USE_POSTGRES=TRUE
-    command: sh -c '(./wait-for pg_master:5432 -- ./db-ops.sh ) && memcached start -u memcached -d && (nohup python3 cpu_usage.py &) &&  python3 ./manage.py runserver 0.0.0.0:8000'
+    command: sh -c '(./wait-for pg_master:5432) && memcached start -u memcached -d && (nohup python3 cpu_usage.py &) &&  python3 ./manage.py runserver 0.0.0.0:8000'
     ports: 
       - 8000:8000
     depends_on:
